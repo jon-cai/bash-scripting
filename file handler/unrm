@@ -1,0 +1,24 @@
+# checks if TRASH directory exist
+if [ ! -d "$TRASH" ] ; then
+  #mkdir $TRASH
+  echo "Trash does not exist."
+  exit
+fi
+
+WD=$PWD
+cd $TRASH
+for argument in $@; do
+   # changes the "/" in the argument to "--"
+   filename=$(echo $argument | sed 's!/!--!g')
+  
+   # checks if argument exists in trash directory
+   if [ -e $TRASH/$filename ]; then
+      # changes the "--" back to "/"
+      new_file=$(echo $filename | sed 's!--!/!g')
+      mv $TRASH/$filename $WD/$new_file
+   
+   else
+      echo "unrm: cannot remove '$argument': No such file or directory"
+   fi
+done
+

@@ -1,0 +1,8 @@
+# checks if TRASH directory exists.
+if [ ! -d "$TRASH" ]; then
+   #mkdir $TRASH
+   echo "Trash does not exist."
+   exit
+fi
+
+du $TRASH 

@@ -1,0 +1,6 @@
+if [ ! -d "$TRASH" ]; then
+  echo "Trash does not exist."
+  exit
+fi
+
+rm -r $TRASH/*

@@ -1,0 +1,42 @@
+CS146 Assignment 3 Problem 2 Documentation
+
+NAME: srm
+
+SYNOPSIS: srm [OPTION] . . . [FILE] . . .
+
+DESCRIPTION: 
+Safely removes files given in its arguments. Files are placed in a trash bin and can be un-removed using the “unrm” command.
+When "srm" is called with a directory, the entire directory will be safe-rm'd.
+If "srm" is called with options, the files will be removed with the regular “/bin/rm” command, and files will NOT be placed in a trash bin. 
+
+
+NAME: unrm
+
+SYNOPSIS: unrm [FILE] . . . 
+
+DESCRIPTION:
+Un-removes files that were placed in a trash bin by “srm” and not yet trashed by “trash”. “unrm” will only un-remove the files given in its arguments. “unrm” can only un-remove files explicitly safe-removed through the command “srm”. “unrm” will only work with the current directory.
+
+
+NAME: lsrm
+
+SYNOPSIS: lsrm [ignored command line arguments]
+
+DESCRIPTION:
+Lists information about the files in the trash bin of “srm” in the long listing format. Descended directories that were safe-rm’d will have their file names listed with all the “/” replaced with “--”. This change is temporary and will be reverted when un-removed with "unrm". “lsrm” takes no arguments.
+
+
+NAME: durm
+
+SYNOPSIS: durm [ignored command line arguments]
+
+DESCRIPTION:
+Lets you know how much disk space the trash bin of safe-rm files is taking up. This disk space can be recovered by calling “trash”. “durm” takes no arguments.
+
+
+NAME: trash
+
+SYNOPSIS: trash [ignored command line arguments]
+
+DESCRIPTION:
+Permanently removes all files in the trash bin that were safe-rm’d by “srm”. “trash” takes no arguments.

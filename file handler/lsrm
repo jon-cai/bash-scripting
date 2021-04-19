@@ -1,0 +1,7 @@
+if [ ! -d "$TRASH" ]; then
+   #mkdir $TRASH
+   echo "Trash does not exist."
+   exit
+fi
+
+ls -l $TRASH

@@ -1,0 +1,24 @@
+#checks if $TRASH variable has been exported
+if [ -z "$TRASH" ]; then
+  echo '$TRASH variable not exported.'
+  exit
+fi
+
+# checks if TRASH directory exist and creates a new one if it doesn't
+if [ ! -d "$TRASH" ] ; then
+  mkdir $TRASH
+  echo "Trash did not exist. A new one has been created at: "$TRASH
+fi
+
+for argument in $@; do
+   # handling when there are flags
+   if [[ "$argument" == -* ]]; then
+     /bin/rm "$@"
+     exit
+   fi
+
+   # changes all "/" to "--" temporarily while in trash
+   # since the path directories won't exist in the trashbin
+   new_name=$(echo $argument |sed 's!/!--!g') 
+   mv $argument $TRASH/$new_name
+done
