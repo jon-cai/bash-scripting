@@ -1,0 +1,1 @@
+echo "$1" | grep -q '^[_[:alpha:]][_[:alnum:]]*$' && echo "yes" || echo "no"
