@@ -1,7 +1,29 @@
-cx documentation: A short shell script that loops through all arguments on the command line and gives executable permission to the user for those files.
-nf documentation: A short shell script that will print out the number of files in the current directory by counting the number of lines outputted by the "ls" command.
-lss documentation: A short shell script that provides a long listing format of the current directory, sorted in descending order by number of bytes. The script also removes the first line of the "ls" output that gives the total number of blocks taken up by the files.
-whoson documentation: A shell script that prints out a sorted list of all undergraduates logged in on the current machine by looping through a list of all users logged in and checking if they are in the ugrad group.
-howmany documentation: A shell script that prints out the number of undergraduate students logged in on the machine by calling on the whoson script, placing each user on a separate line, and counting how many lines there are.
-valid documentation: A shell script that checks if the argument provided is a valid variable name by comparing it to a regular expression that checks if the variable begins with a letter or underscore, and contains only alphanumeric characters.
-prargs documentation: A shell script that prints out the command line arguments in a numbered list format by using a counter to keep track of the position of the arguments and looping through the arguments. The script then prints out the counter position along with the argument name in the correct format.
+cx documentation: 
+A short shell script that loops through all arguments on the command line and gives 
+executable permission to the user for those files.
+
+nf documentation: 
+A short shell script that will print out the number of files in the current directory by 
+counting the number of lines outputted by the "ls" command.
+
+lss documentation: 
+A short shell script that provides a long listing format of the current directory, sorted 
+in descending order by number of bytes. The script also removes the first line of the "ls" 
+output that gives the total number of blocks taken up by the files.
+
+whoson documentation: A shell script that prints out a sorted list of all undergraduates 
+logged in on the current machine by looping through a list of all users logged in and 
+checking if they are in the ugrad group.
+
+howmany documentation: A shell script that prints out the number of undergraduate students 
+logged in on the machine by calling on the whoson script, placing each user on a separate 
+line, and counting how many lines there are.
+
+valid documentation: A shell script that checks if the argument provided is a valid variable 
+name by comparing it to a regular expression that checks if the variable begins with a 
+letter or underscore, and contains only alphanumeric characters.
+
+prargs documentation: A shell script that prints out the command line arguments in a 
+numbered list format by using a counter to keep track of the position of the arguments and 
+looping through the arguments. The script then prints out the counter position along with 
+the argument name in the correct format.
