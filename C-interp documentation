@@ -1,0 +1,10 @@
+Documentation
+
+NAME: C-interp 
+
+SYNOPSIS: ln -s C-interp [FILE]
+
+DESCRIPTION:
+Acts as a C language interpreter by having a soft link of the C file point to it. When the C file is called, “C-interp” will compile and execute the file.c along with the arguments given.
+“C-interp” places all the files created temporarily in the “/tmp/” folder, and after completion, deletes the entire folder. 
+Temporary files are deleted even if the program is interrupted by Exit, Hangup, Interrupt, Quit, and Terminate.
