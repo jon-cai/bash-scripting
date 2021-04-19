@@ -1,0 +1,20 @@
+#!/bin/sh
+
+awkprog=$1
+filename=$2
+varnames=$(awk '$1~/^[^#]/{print; exit}' $filename) #gets header line
+lineNum=$(awk '$1~/^[^#]/{print NR; exit}' $filename) #line number of header
+awkcode="{ "
+count=1
+
+for var in $varnames; do
+    awkcode="$awkcode $var=\$$count; "
+    count=$((count+1))
+done
+awkcode="${awkcode%??} } $awkprog"
+
+# calls awk and skips header and all commented lines before it
+# and also skips any commented lines within the data
+awk -F$'\t' "NR<$lineNum+1 {next} /^[[:space:]]*#/ {next} $awkcode" "$filename"
+#awk -F$'\t' $awkcode $filename
+

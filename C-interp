@@ -1,0 +1,20 @@
+#!/bin/sh
+
+function cleanup()
+{
+   rm -r $tmpDir
+}
+trap cleanup 0  #EXIT
+trap cleanup 1  #Hangup
+trap cleanup 2  #Interrupt
+trap cleanup 3  #QUIT
+trap cleanup 15 #TERMINATE
+
+shName=$(basename "$0")
+randName="$(date +%Y%m%d%H%M%S)$USER"
+tmpDir="/tmp/$randName"
+
+mkdir $tmpDir
+
+gcc -o $tmpDir/$shName $shName.c 
+$tmpDir/$shName "$@"  

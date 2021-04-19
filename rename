@@ -1,0 +1,20 @@
+#!/bin/sh
+
+forceflag=0
+
+if [ "$1" == "-f" ]; then
+   sed_sub_cmd=s$2
+   forceflag=1
+else
+   sed_sub_cmd=s$1
+
+fi
+
+for arg in "${@:2+$forceflag}"; do
+   new=`printf "$arg" | sed $sed_sub_cmd`
+   if [[ -f "$new" && $forceflag -eq "0" ]] ; then
+      [ $arg != $new ] && echo $new file already exists
+   else
+     [ $arg != $new ] && mv -f $arg $new
+   fi
+done
