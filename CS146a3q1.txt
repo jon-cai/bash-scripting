@@ -1,0 +1,19 @@
+CS146 Assignment 3 Problem 1 Documentation
+
+NAME: lss - long list directory contents in decreasing byte order
+
+SYNOPSIS: lss [OPTION] . . . [FILE] . . .
+
+DESCRIPTION:
+List information about files in a given directory, with the current directory as default. Files will be listed with a long listing format and will be sorted by decreasing byte order.
+
+lss will accept the options of “ls” with the exception of a few flags:
+   -s : The “ls -ls” size flag adds an extra column to the output, which messes up the sorting function in lss so it is not supported.
+
+   -i : The “ls -li” inode flag adds an extra column to the output, which messes up the sorting function in lss so it is not supported.
+
+   -g : The “ls -lg” flag removes the list owner column in the output, which messes up the sorting function in lss so it is not supported.
+
+All other arguments that lss accepts will be interpreted as filenames and will list only those files in the output. 
+
+Directories will be listed, but will not be descended unless explicitly listed.

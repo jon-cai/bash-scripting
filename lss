@@ -1,0 +1,43 @@
+
+# variable to check if there are any filename arguments
+has_filename=false
+
+# runs the orginal command if there are no arguments
+if [ $# == 0 ]; then
+  ls -l | sort -k5nr
+  exit
+fi
+
+for i in "$@"; do
+  # the g flag removes the owner column which messes up the sort command
+  # so it is not supported
+  if [ "$i" == "-g" ]; then
+    echo "Error: Does not support '-g'"
+    exit
+
+  # Using the size flag will add an extra column
+  # which messes up the sort command so it is not supported
+  elif [ "$i" == "-s" ]; then
+    echo "Error: Does not support '-s'"
+    exit
+
+  # the inode flag adds an extra column 
+  # which messes up the sort command so it is not supported
+  elif [ "$i" == "-i" ]; then
+    echo "Error: Does not support '-i'"
+    exit
+
+  elif [[ "$i" != -* ]]; then 
+    # if argument doesn't start with '-', then consider it a filename
+    has_filename=true
+  fi
+done
+
+if [ "$has_filename" == true ]; then
+  # if command contains filename(s), includes a -d flag
+  # so directories are not descended
+  ls -ld "$@" | sort -k5nr
+
+else
+  ls -l "$@" | sort -k5nr
+fi
