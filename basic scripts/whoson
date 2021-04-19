@@ -1,0 +1,5 @@
+for user in $(users | fmt -w 1 | uniq);
+do
+  id -Gn $user | grep -q ugrad && echo -n "$user ";
+done
+echo "";
